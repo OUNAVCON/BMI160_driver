@@ -761,38 +761,38 @@ enum bmi160_int_status_sel {
 struct bmi160_int_status_bits
 {
 #if LITTLE_ENDIAN == 1
-    uint32_t step : 1;
-    uint32_t sigmot : 1;
-    uint32_t anym : 1;
+    uint8_t step : 1;
+    uint8_t sigmot : 1;
+    uint8_t anym : 1;
 
     /* pmu trigger will be handled later */
-    uint32_t pmu_trigger_reserved : 1;
-    uint32_t d_tap : 1;
-    uint32_t s_tap : 1;
-    uint32_t orient : 1;
-    uint32_t flat_int : 1;
-    uint32_t reserved : 2;
-    uint32_t high_g : 1;
-    uint32_t low_g : 1;
-    uint32_t drdy : 1;
-    uint32_t ffull : 1;
-    uint32_t fwm : 1;
-    uint32_t nomo : 1;
-    uint32_t anym_first_x : 1;
-    uint32_t anym_first_y : 1;
-    uint32_t anym_first_z : 1;
-    uint32_t anym_sign : 1;
-    uint32_t tap_first_x : 1;
-    uint32_t tap_first_y : 1;
-    uint32_t tap_first_z : 1;
-    uint32_t tap_sign : 1;
-    uint32_t high_first_x : 1;
-    uint32_t high_first_y : 1;
-    uint32_t high_first_z : 1;
-    uint32_t high_sign : 1;
-    uint32_t orient_1_0 : 2;
-    uint32_t orient_2 : 1;
-    uint32_t flat : 1;
+    uint8_t pmu_trigger_reserved : 1;
+    uint8_t d_tap : 1;
+    uint8_t s_tap : 1;
+    uint8_t orient : 1;
+    uint8_t flat_int : 1;
+    uint8_t reserved : 2;
+    uint8_t high_g : 1;
+    uint8_t low_g : 1;
+    uint8_t drdy : 1;
+    uint8_t ffull : 1;
+    uint8_t fwm : 1;
+    uint8_t nomo : 1;
+    uint8_t anym_first_x : 1;
+    uint8_t anym_first_y : 1;
+    uint8_t anym_first_z : 1;
+    uint8_t anym_sign : 1;
+    uint8_t tap_first_x : 1;
+    uint8_t tap_first_y : 1;
+    uint8_t tap_first_z : 1;
+    uint8_t tap_sign : 1;
+    uint8_t high_first_x : 1;
+    uint8_t high_first_y : 1;
+    uint8_t high_first_z : 1;
+    uint8_t high_sign : 1;
+    uint8_t orient_1_0 : 2;
+    uint8_t orient_2 : 1;
+    uint8_t flat : 1;
 #elif BIG_ENDIAN == 1
     uint32_t high_first_x : 1;
     uint32_t high_first_y : 1;
@@ -1105,22 +1105,22 @@ struct bmi160_acc_tap_int_cfg
 #if LITTLE_ENDIAN == 1
 
     /*! tap threshold */
-    uint16_t tap_thr : 5;
+    uint8_t tap_thr : 5;
 
     /*! tap shock */
-    uint16_t tap_shock : 1;
+    uint8_t tap_shock : 1;
 
     /*! tap quiet */
-    uint16_t tap_quiet : 1;
+    uint8_t tap_quiet : 1;
 
     /*! tap duration */
-    uint16_t tap_dur : 3;
+    uint8_t tap_dur : 3;
 
     /*! data source 0- filter & 1 pre-filter*/
-    uint16_t tap_data_src : 1;
+    uint8_t tap_data_src : 1;
 
     /*! tap enable, 1 - enable, 0 - disable */
-    uint16_t tap_en : 1;
+    uint8_t tap_en : 1;
 #elif BIG_ENDIAN == 1
 
     /*! tap enable, 1 - enable, 0 - disable */
@@ -1231,19 +1231,19 @@ struct bmi160_acc_step_detect_int_cfg
 #if LITTLE_ENDIAN == 1
 
     /*! 1- step detector enable, 0- step detector disable */
-    uint16_t step_detector_en : 1;
+    uint8_t step_detector_en : 1;
 
     /*! minimum threshold */
-    uint16_t min_threshold : 2;
+    uint8_t min_threshold : 2;
 
     /*! minimal detectable step time */
-    uint16_t steptime_min : 3;
+    uint8_t steptime_min : 3;
 
     /*! enable step counter mode setting */
-    uint16_t step_detector_mode : 2;
+    uint8_t step_detector_mode : 2;
 
     /*! minimum step buffer size*/
-    uint16_t step_min_buf : 3;
+    uint8_t step_min_buf : 3;
 #elif BIG_ENDIAN == 1
 
     /*! minimum step buffer size*/
@@ -1267,22 +1267,22 @@ struct bmi160_acc_no_motion_int_cfg
 #if LITTLE_ENDIAN == 1
 
     /*! no motion interrupt x */
-    uint16_t no_motion_x : 1;
+    uint8_t no_motion_x : 1;
 
     /*! no motion interrupt y */
-    uint16_t no_motion_y : 1;
+    uint8_t no_motion_y : 1;
 
     /*! no motion interrupt z */
-    uint16_t no_motion_z : 1;
+    uint8_t no_motion_z : 1;
 
     /*! no motion duration */
-    uint16_t no_motion_dur : 6;
+    uint8_t no_motion_dur : 6;
 
     /*! no motion sel , 1 - enable no-motion ,0- enable slow-motion */
-    uint16_t no_motion_sel : 1;
+    uint8_t no_motion_sel : 1;
 
     /*! data source 0- filter & 1 pre-filter*/
-    uint16_t no_motion_src : 1;
+    uint8_t no_motion_src : 1;
 
     /*! no motion threshold */
     uint8_t no_motion_thres;
@@ -1315,22 +1315,22 @@ struct bmi160_acc_orient_int_cfg
 #if LITTLE_ENDIAN == 1
 
     /*! thresholds for switching between the different orientations */
-    uint16_t orient_mode : 2;
+    uint8_t orient_mode : 2;
 
     /*! blocking_mode */
-    uint16_t orient_blocking : 2;
+    uint8_t orient_blocking : 2;
 
     /*! Orientation interrupt hysteresis */
-    uint16_t orient_hyst : 4;
+    uint8_t orient_hyst : 4;
 
     /*! Orientation interrupt theta */
-    uint16_t orient_theta : 6;
+    uint8_t orient_theta : 6;
 
     /*! Enable/disable Orientation interrupt */
-    uint16_t orient_ud_en : 1;
+    uint8_t orient_ud_en : 1;
 
     /*! exchange x- and z-axis in algorithm ,0 - z, 1 - x */
-    uint16_t axes_ex : 1;
+    uint8_t axes_ex : 1;
 
     /*! 1 - orient enable, 0 - orient disable */
     uint8_t orient_en : 1;
@@ -1363,17 +1363,17 @@ struct bmi160_acc_flat_detect_int_cfg
 #if LITTLE_ENDIAN == 1
 
     /*! flat threshold */
-    uint16_t flat_theta : 6;
+    uint8_t flat_theta : 6;
 
     /*! flat interrupt hysteresis */
-    uint16_t flat_hy : 3;
+    uint8_t flat_hy : 3;
 
     /*! delay time for which the flat value must remain stable for the
      * flat interrupt to be generated */
-    uint16_t flat_hold_time : 2;
+    uint8_t flat_hold_time : 2;
 
     /*! 1 - flat enable, 0 - flat disable */
-    uint16_t flat_en : 1;
+    uint8_t flat_en : 1;
 #elif BIG_ENDIAN == 1
 
     /*! 1 - flat enable, 0 - flat disable */
@@ -1486,24 +1486,24 @@ struct bmi160_int_pin_settg
 
     /*! To enable either INT1 or INT2 pin as output.
      * 0- output disabled ,1- output enabled */
-    uint16_t output_en : 1;
+    uint8_t output_en : 1;
 
     /*! 0 - push-pull 1- open drain,only valid if output_en is set 1 */
-    uint16_t output_mode : 1;
+    uint8_t output_mode : 1;
 
     /*! 0 - active low , 1 - active high level.
      * if output_en is 1,this applies to interrupts,else PMU_trigger */
-    uint16_t output_type : 1;
+    uint8_t output_type : 1;
 
     /*! 0 - level trigger , 1 - edge trigger  */
-    uint16_t edge_ctrl : 1;
+    uint8_t edge_ctrl : 1;
 
     /*! To enable either INT1 or INT2 pin as input.
      * 0 - input disabled ,1 - input enabled */
-    uint16_t input_en : 1;
+    uint8_t input_en : 1;
 
     /*! latch duration*/
-    uint16_t latch_dur : 4;
+    uint8_t latch_dur : 4;
 #elif BIG_ENDIAN == 1
 
     /*! latch duration*/

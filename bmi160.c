@@ -3571,7 +3571,7 @@ static int8_t get_accel_data(uint8_t len, struct bmi160_sensor_data *accel, cons
         {
             time_0 = data_array[idx++];
             time_1 = (uint16_t)(data_array[idx++] << 8);
-            time_2 = (uint32_t)(data_array[idx++] << 16);
+            time_2 = (uint32_t)(((uint32_t)data_array[idx++]) << 16);
             accel->sensortime = (uint32_t)(time_2 | time_1 | time_0);
         }
         else
@@ -3651,7 +3651,7 @@ static int8_t get_gyro_data(uint8_t len, struct bmi160_sensor_data *gyro, const 
             idx = idx + 6;
             time_0 = data_array[idx++];
             time_1 = (uint16_t)(data_array[idx++] << 8);
-            time_2 = (uint32_t)(data_array[idx++] << 16);
+            time_2 = ((uint32_t)(uint32_t)data_array[idx++]) << 16;
             gyro->sensortime = (uint32_t)(time_2 | time_1 | time_0);
         }
         else
@@ -3717,8 +3717,8 @@ static int8_t get_accel_gyro_data(uint8_t len,
         if (len == 3)
         {
             time_0 = data_array[idx++];
-            time_1 = (uint16_t)(data_array[idx++] << 8);
-            time_2 = (uint32_t)(data_array[idx++] << 16);
+            time_1 = ((uint16_t)data_array[idx++]) << 8;
+            time_2 = ((uint32_t)data_array[idx++]) << 16;
             accel->sensortime = (uint32_t)(time_2 | time_1 | time_0);
             gyro->sensortime = (uint32_t)(time_2 | time_1 | time_0);
         }
@@ -6203,7 +6203,7 @@ static void unpack_sensortime_frame(uint16_t *data_index, const struct bmi160_de
     }
     else
     {
-        sensor_time_byte3 = dev->fifo->data[(*data_index) + BMI160_SENSOR_TIME_MSB_BYTE] << 16;
+        sensor_time_byte3 = ((uint32_t)(dev->fifo->data[(*data_index) + BMI160_SENSOR_TIME_MSB_BYTE])) << 16;
         sensor_time_byte2 = dev->fifo->data[(*data_index) + BMI160_SENSOR_TIME_XLSB_BYTE] << 8;
         sensor_time_byte1 = dev->fifo->data[(*data_index)];
 
